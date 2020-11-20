@@ -65,6 +65,9 @@ const themeBgColors = {
     sl: '#fdf6e3',
     macdark: '#1f1f20'
 };
+const themeVibrancies = {
+    macdark: 'sidebar'
+};
 const defaultBgColor = '#282C34';
 
 logProgress('defining args');
@@ -228,7 +231,8 @@ function getDefaultTheme() {
 
 function createMainWindow() {
     const theme = appSettings.theme || getDefaultTheme();
-    const bgColor = themeBgColors[theme] || defaultBgColor;
+    const vibrancy = themeVibrancies[theme] || null;
+    const backgroundColor = vibrancy ? null : themeBgColors[theme] || defaultBgColor;
     const windowOptions = {
         show: false,
         width: 1000,
@@ -236,7 +240,8 @@ function createMainWindow() {
         minWidth: 700,
         minHeight: 400,
         titleBarStyle: appSettings.titlebarStyle,
-        backgroundColor: bgColor,
+        backgroundColor,
+        vibrancy,
         webPreferences: {
             contextIsolation: false,
             backgroundThrottling: false,

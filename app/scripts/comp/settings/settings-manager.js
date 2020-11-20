@@ -1,6 +1,7 @@
 import { Events } from 'framework/events';
 import { Features } from 'util/features';
 import { Locale } from 'util/locale';
+import { Launcher } from 'comp/launcher';
 
 const appleThemes = {
     macdark: 'setGenThemeMacDark'
@@ -66,11 +67,22 @@ const SettingsManager = {
         if (metaThemeColor) {
             metaThemeColor.content = window.getComputedStyle(document.body).backgroundColor;
         }
+        if (Features.isMac) {
+            const prevVibrancy = this.getThemeVibrancy(this.activeTheme);
+            const newVibrancy = this.getThemeVibrancy(theme);
+            if (prevVibrancy !== newVibrancy) {
+                Launcher.getMainWindow().setVibrancy(newVibrancy);
+            }
+        }
         this.activeTheme = theme;
     },
 
     getThemeClass(theme) {
         return 'th-' + theme;
+    },
+
+    getThemeVibrancy(theme) {
+        return theme === 'macdark' ? 'sidebar' : null;
     },
 
     setFontSize(fontSize) {

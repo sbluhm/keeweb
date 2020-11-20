@@ -27,8 +27,13 @@ body.th-macdark {
     --form-box-border-focus: #6697c0;
     --form-box-shadow-color-focus: #44749d;
     --selected-item-color: #2457c9;
+    background-color: transparent !important;
+    .app__body > *:not(.app__menu) {
+        background-color: var(--background-color);
+    }
     .app__menu {
-        background-color: var(--secondary-background-color);
+        //background-color: var(--secondary-background-color);
+        //background-color: transparent !important;
         .menu__item.menu__item--active > .menu__item-body,
         .menu__item.menu__item--active.menu__item--hover > .menu__item-body {
             background-color: #515152;
