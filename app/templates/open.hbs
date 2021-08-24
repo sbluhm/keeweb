@@ -109,6 +109,7 @@
                      id="open__last-item--{{file.id}}">
                     {{#if file.icon}}<i class="fa fa-{{file.icon}} open__last-item-icon"></i>{{/if}}
                     <span class="open__last-item-text">{{file.name}}</span>
+                    {{#if 1}}<i class="fa fa-cog open__icon open__icon-storage open__last-item-icon-edit" data-storage="webdav" id="open__icon-storage--webdav"></i>{{/if}}
                     {{#if ../canRemoveLatest}}<i class="fa fa-times open__last-item-icon-del"></i>{{/if}}
                 </div>
             {{/each}}
