@@ -351,7 +351,7 @@ class StorageWebDav extends StorageBase {
         xhr.addEventListener('error', () => {
             this.logger.debug(config.op + ' error', config.path, this.logger.ts(ts));
             if (callback) {
-                callback('webdav stefa network error', xhr);
+                callback('network error', xhr);
                 callback = null;
             }
         });
